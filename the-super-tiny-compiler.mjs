@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * TTTTTTTTTTTTTTTTTTTTTTTHHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEE
  * T:::::::::::::::::::::TH:::::::H     H:::::::HE::::::::::::::::::::E
@@ -760,7 +758,7 @@ function traverser(ast, visitor) {
 
     // If there is an `enter` method for this node type we'll call it with the
     // `node` and its `parent`.
-    if (methods && methods.enter) {
+    if (methods?.enter) {
       methods.enter(node, parent);
     }
 
@@ -796,7 +794,7 @@ function traverser(ast, visitor) {
 
     // If there is an `exit` method for this node type we'll call it with the
     // `node` and its `parent`.
-    if (methods && methods.exit) {
+    if (methods?.exit) {
       methods.exit(node, parent);
     }
   }
@@ -1026,10 +1024,10 @@ function codeGenerator(node) {
  */
 
 function compiler(input) {
-  let tokens = tokenizer(input);
-  let ast    = parser(tokens);
-  let newAst = transformer(ast);
-  let output = codeGenerator(newAst);
+  const tokens = tokenizer(input);
+  const ast = parser(tokens);
+  const newAst = transformer(ast);
+  const output = codeGenerator(newAst);
 
   // and simply return the output!
   return output;
@@ -1043,7 +1041,7 @@ function compiler(input) {
  */
 
 // Now I'm just exporting everything...
-module.exports = {
+export {
   tokenizer,
   parser,
   traverser,
